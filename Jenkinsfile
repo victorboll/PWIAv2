@@ -15,6 +15,14 @@ pipeline {
             }
         }
 
+         stage('Verificacao sonarQube') {
+            steps {
+                script {
+                    mvn clean verify sonar:sonar-Dsonar.projectKey=PWIAV2 -Dsonar.projectName='PWIAV2' Dsonar.host.url=http://host.docker.internal:9000 -Dsonar.token=sqp_9202f7baf2b212d4098ff53e5230bbe32b8e8a5c
+                }
+            }
+        }
+
         stage('Construir Imagem Docker') {
             steps {
                 script {
@@ -34,7 +42,7 @@ pipeline {
                     bat "docker stop ${appName} || exit 0"  
                     bat "docker rm ${appName}  || exit 0"  
 
-                    bat "docker run -d --name ${appName} -p 8081:8081 ${imageTag}"
+                    bat "docker run -d --name ${appName} -p 8090:8090 ${imageTag}"
                 }
             }
         }
