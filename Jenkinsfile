@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Verificar Repositorio') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/victor']], useRemoteConfigs:[[url: 'https://github.com/danielasegadilha/springboot-carrinho-de-compra.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], useRemoteConfigs:[[url: 'https://github.com/victorboll/PWIAv2.git']]])
             }
         }
 
