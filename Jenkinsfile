@@ -11,7 +11,7 @@ pipeline {
         stage('Instalar Dependencias e Build') {
             steps {
                 script {
-                    sh 'mvn clean install -DskipTests'
+                    bat 'mvn clean install -DskipTests'
                 }
             }
         }
